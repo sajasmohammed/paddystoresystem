@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 
 ?>
 <?php
@@ -101,7 +101,7 @@ if (isset($_GET['edit_paddy_buy'])){
 								 					<label for="farmer_reg_no"  class="col-sm-3 text-right control-label col-form-label" >Paddy Type</label>
 								 						<div class="col-md-6">
 								 							<select name="farmer_reg_no" required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 									 <option value="">Select</option>
+								 									 <option value=""><?php echo $farmer_reg_no; ?></option>
 								 									 <?php echo $farmer_reg_num; ?>
 								 							</select>
 								 						</div>
@@ -110,8 +110,8 @@ if (isset($_GET['edit_paddy_buy'])){
                                                  <div class="form-group row">
 								 					<label for="paddy_name"  class="col-sm-3 text-right control-label col-form-label" >Paddy Type</label>
 								 						<div class="col-md-6">
-								 							<select name="paddy_name"  value="<?php echo $paddy_type; ?>" required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 									 <option value="">Select</option>
+								 							<select name="paddy_name"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
+								 									 <option value=""><?php echo $paddy_type; ?></option>
 								 									 <?php echo $paddy_name; ?>
 								 							</select>
 								 						</div>
@@ -187,3 +187,4 @@ if (isset($_GET['edit_paddy_buy'])){
 
 
 ?>
+<?php } ?>

@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 
 ?>
 <!DOCTYPE html>
@@ -83,7 +83,7 @@
             
                     <div class="row">
                                                 <?php
-											        $sql = "select  * from stock";
+											        $sql = "select  * from paddy_buy";
 											        $result = mysqli_query($conn, $sql);
 												    $stock_rows=mysqli_num_rows($result);
                                                 ?>
@@ -191,7 +191,7 @@
                                                 
                                                 <!-- Column -->
                                                 <?php
-													$sql = "SELECT Sum(total_wieght) as 'sumcflow' from stock";
+													$sql = "SELECT (total_weight) as 'sumcflow' from stock";
 													$run=mysqli_query($conn, $sql);
 													    while ( $rows=mysqli_fetch_array($run)) {
                                                             $cal_wieght=$rows['sumcflow'];
@@ -202,7 +202,6 @@
                                                         <div class="box bg-warning text-center">
                                                             <h1 class="font-light text-white"><i class="mdi mdi-stocking"></i></h1>
                                                             <a href="stock.php"><h6 class="text-white">Stock</h6></a>
-                                                            <h4 class="text-white"><?php echo $stock_rows; ?></h4>
                                                             <h4 class="text-white"><?php echo $cal_wieght; ?> KG</h4>
                                                         
                                                         </div>
@@ -231,6 +230,86 @@
                                                 </div>
                                                 <?php } ?>
                                                 <!-- Column -->
+
+                                                <!-- Column -->
+                                                <?php
+													
+                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_buy where paddy_type='samba'";
+                                                    $run=mysqli_query($conn, $sql);
+                                                        while ( $rows=mysqli_fetch_array($run)) {
+                                                            $cal_amount=$rows['sumcflow'];
+												?>
+                                                <div class="col-md-6 col-lg-3">
+                                                    <div class="card card-danger">
+                                                        <div class="box bg-success text-center">
+                                                            <h1 class="font-light text-white"><i class="mdi mdi-item"></i></h1>
+                                                            <a href="bank.php"><h6 class="text-white">Samba - Paddy Buy</h6></a>
+                                                            <h4 class="text-white"><?php echo $cal_amount; ?> KG</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php } ?>
+                                                <!-- Column -->
+
+                                                <!-- Column -->
+                                                <?php
+													
+                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_buy where paddy_type='keeri samba'";
+                                                    $run=mysqli_query($conn, $sql);
+                                                        while ( $rows=mysqli_fetch_array($run)) {
+                                                            $cal_amount=$rows['sumcflow'];
+												?>
+                                                <div class="col-md-6 col-lg-3">
+                                                    <div class="card card-danger">
+                                                        <div class="box bg-warning text-center">
+                                                            <h1 class="font-light text-white"><i class="mdi mdi-item"></i></h1>
+                                                            <a href="bank.php"><h6 class="text-white">Keeri Samba - Paddy Buy</h6></a>
+                                                            <h4 class="text-white"><?php echo $cal_amount; ?> KG</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php } ?>
+                                                <!-- Column -->
+
+                                                 <!-- Column -->
+                                                 <?php
+													
+                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_issue where paddy_type='samba'";
+                                                    $run=mysqli_query($conn, $sql);
+                                                        while ( $rows=mysqli_fetch_array($run)) {
+                                                            $cal_amount=$rows['sumcflow'];
+												?>
+                                                <div class="col-md-6 col-lg-3">
+                                                    <div class="card card-danger">
+                                                        <div class="box bg-danger text-center">
+                                                            <h1 class="font-light text-white"><i class="mdi mdi-item"></i></h1>
+                                                            <a href="bank.php"><h6 class="text-white">Samba - Paddy Issue</h6></a>
+                                                            <h4 class="text-white"><?php echo $cal_amount; ?> KG</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php } ?>
+                                                <!-- Column -->
+
+                                                <!-- Column -->
+                                                <?php
+													
+                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_issue where paddy_type='keeri samba'";
+                                                    $run=mysqli_query($conn, $sql);
+                                                        while ( $rows=mysqli_fetch_array($run)) {
+                                                            $cal_amount=$rows['sumcflow'];
+												?>
+                                                <div class="col-md-6 col-lg-3">
+                                                    <div class="card card-danger">
+                                                        <div class="box bg-info text-center">
+                                                            <h1 class="font-light text-white"><i class="mdi mdi-item"></i></h1>
+                                                            <a href="bank.php"><h6 class="text-white">Keeri Samba - Paddy Issue</h6></a>
+                                                            <h4 class="text-white"><?php echo $cal_amount; ?> KG</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php } ?>
+                                                <!-- Column -->
                                                 
                                     </div>              
                             </div>
@@ -242,3 +321,4 @@
                   
 		</body>
 </html>
+<?php } ?>

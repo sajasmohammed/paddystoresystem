@@ -136,7 +136,7 @@
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_paddy_type.php?delete_paddy_type=<?php echo $id; ?>">
+																													<a href="delete_paddy_type.php?delete_paddy_type=<?php echo $id; ?>"  onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_paddy_type.php?edit_paddy_type=<?php echo $id; ?>">

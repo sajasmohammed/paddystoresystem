@@ -5,8 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
-
+	}else{
 ?>
 
 <?php
@@ -64,7 +63,7 @@ if (isset($_GET['edit_paddy_price'])){
 															 <nav aria-label="breadcrumb">
 																	 <ol class="breadcrumb">
 																			 <li class="breadcrumb-item"><a href="#">Home</a></li>
-																			 <li class="breadcrumb-item active" aria-current="page">Library</li>
+																			 <li class="breadcrumb-item active" aria-current="page"></li>
 																	 </ol>
 															 </nav>
 													 </div>
@@ -81,9 +80,8 @@ if (isset($_GET['edit_paddy_price'])){
 												 <div class="form-group row">
 								 																 <label for="paddy_name"  class="col-sm-3 text-right control-label col-form-label" >Paddy Type</label>
 								 																	<div class="col-md-6">
-								 																			 <select name="paddy_name"  value="<?php echo $paddy_type; ?>" required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
-								 																							 <option value=""></option>
+								 																			 <select name="paddy_name"   class="select2 form-control custom-select" style="width: 100%; height:36px;">
+								 																							 <option value=""><?php echo $paddy_type; ?></option>
 								 																							 <?php echo $paddy_name; ?>
 								 																			 </select>
 								 																	 </div>
@@ -93,7 +91,7 @@ if (isset($_GET['edit_paddy_price'])){
 														 <div class="form-group row">
 																	<label for="farmer_reg_no" class="col-sm-3 text-right control-label col-form-label">1KG Buy Price</label>
 																	<div class="col-sm-6">
-																		 <input type="number" name="1kg_buy_price" value="<?php echo $buy_price; ?>" autocomplete="off" required class="form-control"  id="1kg_buy_price" placeholder="Buy Price">
+																		 <input type="number" name="1kg_buy_price" value="<?php echo $buy_price; ?>" autocomplete="off"  class="form-control"  id="1kg_buy_price" placeholder="Buy Price">
 																		</div>
 														 </div>
 													
@@ -103,7 +101,7 @@ if (isset($_GET['edit_paddy_price'])){
 														<div class="form-group row">
 																	 <label for="farmer_name" class="col-sm-3 text-right control-label col-form-label">1KG Selling Price</label>
 																		<div class="col-sm-6">
-																			<input type="number" name="1kg_selling_price" value="<?php echo $selling_price; ?>" autocomplete="off" required class="form-control"  id="1kg_selling_price" placeholder="Selling Price">
+																			<input type="number" name="1kg_selling_price" value="<?php echo $selling_price; ?>" autocomplete="off"  class="form-control"  id="1kg_selling_price" placeholder="Selling Price">
 																		</div>
 														</div>
 
@@ -150,3 +148,4 @@ if (isset($_GET['edit_paddy_price'])){
 
 
 ?>
+<?php } ?>

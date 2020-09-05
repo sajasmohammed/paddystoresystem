@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 	
 ?>
 
@@ -34,7 +34,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Reginal Center</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Bank</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -48,7 +48,7 @@
 								                        <div class="card card-body printableArea">
 																					
 																								<div class="card-body">
-																												<h4 class="text-danger">Reginal Center Details</h4><br>
+																												<h4 class="text-danger">Bank Details</h4><br>
 																												<div class="table-responsive"><!-- table-responsive begin -->
 																														<table id="zero_config" class="table table-striped table-bordered"><!-- table table-striped table-bordered table-hover begin -->
 
@@ -90,7 +90,7 @@
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_bank.php?delete_bank=<?php echo $id; ?>">
+																													<a href="delete_bank.php?delete_bank=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_bank.php?edit_bank=<?php echo $id; ?>">
@@ -135,9 +135,10 @@
 																$(".select2").select2();
 														</script>
 
-														<?php include '../js/script3.js' ?>
+														<?php include '../js/script1.js' ?>
 													
 
 
 	  </body>
 </html>
+													<?php } ?>

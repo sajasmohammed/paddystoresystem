@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 
 ?>
 <?php
@@ -14,7 +14,7 @@
 
         $id = $_GET['delete_paddy_price'];
 
-        $sql = "delete from paddy_price where row_id='$id'";
+        $sql = "delete * from paddy_price where row_id='$id'";
 
         $run = mysqli_query($conn,$sql);
 
@@ -28,3 +28,4 @@
     }
 
 ?>
+<?php } ?>

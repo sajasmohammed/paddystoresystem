@@ -30,7 +30,6 @@
                           <strong class="text-info"><?php echo $_SESSION['user']['username']; ?></strong> <i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
                           <?php endif ?>
                         </a>
-                        <a class="dropdown-item" href="../changepassword.php"><i class="ti-key m-r-5 m-l-5"></i>Change Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         <div class="dropdown-divider"></div>

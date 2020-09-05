@@ -28,7 +28,6 @@
             if(isCollactionOfficer()){
                 echo '
                 <li class="sidebar-item"><a href="../common_components/farmer.php" class="sidebar-link"><i class="mdi mdi-human-child"></i><span class="hide-menu"> Farmer  </span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/stock.php" aria-expanded="false"><i class="mdi mdi-store"></i><span class="hide-menu">Stock</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_buy.php" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Paddy Buy</span></a></li>';
             }
            
@@ -44,8 +43,7 @@
              }
              if(isFinanceOfficer()){
                 echo  '
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/bank.php" aria-expanded="false"><i class="mdi mdi-bank"></i><span class="hide-menu">Bank</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_buy.php" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Paddy Buy</span></a></li>';
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/bank.php" aria-expanded="false"><i class="mdi mdi-bank"></i><span class="hide-menu">Bank</span></a></li>';
              }
              if(isStorekeeper()){
                 echo  '

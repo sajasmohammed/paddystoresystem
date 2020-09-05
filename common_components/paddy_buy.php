@@ -6,19 +6,19 @@
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
 	}
-	
+	else{
 ?>
 
 <?php
 
-$farmer_reg_no="";
+$farmer_reg_num="";
 
 $sql=mysqli_query($conn,"select * from farmer");
 
 if (mysqli_num_rows($sql)) {
   while ($row=mysqli_fetch_array($sql)) {
 
-        $farmer_reg_no.='<option value='.$row['farmer_reg_no'].'>'.$row['farmer_reg_no'].'</option>';
+        $farmer_reg_num.='<option value='.$row['farmer_reg_no'].'>'.$row['farmer_reg_no'].'</option>';
 
   }
 }
@@ -40,6 +40,21 @@ if (mysqli_num_rows($sql)) {
 }
 ?>
 
+<?php
+
+$reg_center_name="";
+
+$sql=mysqli_query($conn,"select * from reginal_center");
+
+if (mysqli_num_rows($sql)) {
+  while ($row=mysqli_fetch_array($sql)) {
+
+        $reg_center_name.='<option value='.$row['reg_center_name'].'>'.$row['reg_center_name'].'</option>';
+
+  }
+}
+?>
+
   <?php
 
 	if(isset($_POST["insert"]))
@@ -48,21 +63,39 @@ if (mysqli_num_rows($sql)) {
                 $paddy_type = $_POST['paddy_type'];
                 $buy_price=$_POST['1kg_buy_price']; 
                 $reason_less_buy_price=$_POST['reason_less_buy_price']; 
-                $total_weight=$_POST['total_weight'];
-                
-                $total_amount = $total_weight * $buy_price;
-                
-						  $sql = "INSERT INTO paddy_buy(farmer_reg_no,paddy_type,1kg_buy_price,reason_less_buy_price,total_weight, total_amount) VALUES ('$farmer_reg_no', '$paddy_type', '$buy_price', '$reason_less_buy_price', '$total_weight', '$total_amount')";
+                $total_weight=$_POST['total_weight']; 
+				$total_weights=$_POST['total_weight']; 
+				$reg_center=$_POST['reg_center_name']; 
 
- 									if (mysqli_query($conn, $sql)) {
+				$total_amount = $total_weight * $buy_price;
+				$currentDateTime = date('m');
+				$getMonths=12 - $currentDateTime;
 
- 										echo '<script type="text/javascript"> alert("New record created successfully");</script>';
- 										echo '<script type="text/javascript"> window.location.href="paddy_buy.php";</script>';
+				
+					$sql8 = "SELECT Sum(total_weight) as 'sumcflow' from paddy_buy";
+				 	$run=mysqli_query($conn, $sql8);
+					 while($rows=mysqli_fetch_array($run)) {
+						 $cal_wieght=$rows['sumcflow'];
+						 $cal_stock=$total_weights + $cal_wieght;
+						 
+						 $sql9 = "update stock set total_weight='$cal_stock'";
+			 
+						  	if($cal_stock < 500){
+							 
+								$sql = "INSERT INTO paddy_buy(farmer_reg_no,paddy_type,1kg_buy_price,reason_less_buy_price,total_weight, total_amount, reg_center_name) VALUES ('$farmer_reg_no', '$paddy_type', '$buy_price', '$reason_less_buy_price', '$total_weight', '$total_amount', '$reg_center')";
+								if (mysqli_query($conn, $sql)) {
+									mysqli_query($conn, $sql9);				
+									echo '<script type="text/javascript"> alert("New record created successfully");</script>';
+ 									echo '<script type="text/javascript"> window.location.href="paddy_buy.php";</script>';
 
-									} else {
-                           echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-             				 }
-
+								} 
+								else {
+								    echo "Error: " . $sql.  "<br>" . mysqli_error($conn);
+								}
+						  	}else{
+								echo"<script type='text/javascript'> alert('Out of Stock, You  have  $getMonths Months to Add more Stock');</script>";										 
+							}
+					 } 	
 	}
 
 
@@ -156,9 +189,8 @@ if (mysqli_num_rows($sql)) {
 								 																 <label for="farmer_reg_no"  class="col-sm-3 text-right control-label col-form-label" >Former Register Number</label>
 								 																	<div class="col-md-6">
 								 																			 <select name="farmer_reg_no"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
-								 																							 <option value=""></option>
-								 																							 <?php echo $farmer_reg_no; ?>
+								 																							 <option >Select</option>
+								 																							 <?php echo $farmer_reg_num; ?>
 								 																			 </select>
 								 																	 </div>
 								 															 </div>
@@ -166,7 +198,7 @@ if (mysqli_num_rows($sql)) {
 								 																 <label for="paddy_type"  class="col-sm-3 text-right control-label col-form-label" >Paddy Type</label>
 								 																	<div class="col-md-6">
 								 																			 <select name="paddy_type"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
+								 																							 <option >Select</option>
 								 																							 <?php echo $paddy_name; ?>
 								 																			 </select>
 								 																	 </div>
@@ -192,6 +224,17 @@ if (mysqli_num_rows($sql)) {
 																												 <input type="number" name="total_weight" autocomplete="off" required class="form-control"  id="total_weight" placeholder="Total Weight">
 																											 </div>
 																								</div>
+
+																								<div class="form-group row">
+								 																 <label for="reg_center_name"  class="col-sm-3 text-right control-label col-form-label" >Reginal Center</label>
+								 																	<div class="col-md-6">
+								 																			 <select name="reg_center_name"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
+								 																							 <option >Select</option>
+								 																							 <?php echo $reg_center_name; ?>
+								 																			 </select>
+								 																	 </div>
+								 															 	</div>
+                                                                                        
 
 																								
 								 													 </div>
@@ -253,7 +296,7 @@ if (mysqli_num_rows($sql)) {
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_paddy_buy.php?delete_paddy_buy=<?php echo $id; ?>">
+																													<a href="delete_paddy_buy.php?delete_paddy_buy=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>
 																												 	<a href="edit_paddy_buy.php?edit_paddy_buy=<?php echo $id; ?>">
@@ -317,3 +360,4 @@ if (mysqli_num_rows($sql)) {
 
 	  </body>
 </html>
+<?php } ?>

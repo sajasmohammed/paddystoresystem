@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2020 at 07:16 PM
+-- Generation Time: Sep 05, 2020 at 03:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bank` (
   `row_id` int(11) NOT NULL,
-  `former_register_no` varchar(100) NOT NULL,
-  `bank_name` varchar(100) NOT NULL,
+  `former_register_no` varchar(5) NOT NULL,
+  `bank_name` varchar(50) NOT NULL,
   `bank_branch` varchar(50) NOT NULL,
-  `bank_account_no` varchar(50) NOT NULL,
+  `bank_account_no` varchar(20) NOT NULL,
   `amount` double NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -43,7 +43,7 @@ CREATE TABLE `bank` (
 --
 
 INSERT INTO `bank` (`row_id`, `former_register_no`, `bank_name`, `bank_branch`, `bank_account_no`, `amount`, `date`) VALUES
-(1, 'dsfs', 'hnb', 'sammanthurai', '222222222222', 46454, '2020-08-13 17:14:39');
+(3, 'FID1', 'HNB', 'Batticaloa', '22202002436', 50000, '2020-08-15 13:56:02');
 
 -- --------------------------------------------------------
 
@@ -53,12 +53,20 @@ INSERT INTO `bank` (`row_id`, `former_register_no`, `bank_name`, `bank_branch`, 
 
 CREATE TABLE `farmer` (
   `row_id` int(11) NOT NULL,
-  `farmer_reg_no` varchar(50) NOT NULL,
-  `farmer_name` varchar(100) NOT NULL,
+  `farmer_reg_no` varchar(5) NOT NULL,
+  `farmer_name` varchar(50) NOT NULL,
   `farmer_nic` varchar(13) NOT NULL,
   `farmer_mobileno` varchar(15) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `farmer`
+--
+
+INSERT INTO `farmer` (`row_id`, `farmer_reg_no`, `farmer_name`, `farmer_nic`, `farmer_mobileno`, `date`) VALUES
+(19, 'FID1', 'test', '35765', '(444) 444-4444', '2020-08-15 10:04:43'),
+(22, 'FID2', 'sajas', '970130675v', '(077) 046-3244', '2020-08-15 13:05:28');
 
 -- --------------------------------------------------------
 
@@ -68,12 +76,13 @@ CREATE TABLE `farmer` (
 
 CREATE TABLE `paddy_buy` (
   `row_id` int(11) NOT NULL,
-  `farmer_reg_no` varchar(100) NOT NULL,
-  `paddy_type` varchar(100) NOT NULL,
+  `farmer_reg_no` varchar(10) NOT NULL,
+  `paddy_type` varchar(50) NOT NULL,
   `1kg_buy_price` double NOT NULL,
   `reason_less_buy_price` varchar(250) NOT NULL,
   `total_weight` double NOT NULL,
   `total_amount` double NOT NULL,
+  `reg_center_name` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -81,8 +90,9 @@ CREATE TABLE `paddy_buy` (
 -- Dumping data for table `paddy_buy`
 --
 
-INSERT INTO `paddy_buy` (`row_id`, `farmer_reg_no`, `paddy_type`, `1kg_buy_price`, `reason_less_buy_price`, `total_weight`, `total_amount`, `date`) VALUES
-(2, 'dsfs', 'samba', 240, 'djsnfdj', 490, 119560, '2020-08-11 14:31:25');
+INSERT INTO `paddy_buy` (`row_id`, `farmer_reg_no`, `paddy_type`, `1kg_buy_price`, `reason_less_buy_price`, `total_weight`, `total_amount`, `reg_center_name`, `date`) VALUES
+(33, 'FID1', 'samba', 343, 'dgfg', 400, 137200, 'dbsjbj', '2020-09-05 10:10:13'),
+(35, 'FID1', 'samba', 132, 'dgjfnm', 99, 13068, 'dbsjbj', '2020-09-05 10:16:50');
 
 -- --------------------------------------------------------
 
@@ -92,7 +102,7 @@ INSERT INTO `paddy_buy` (`row_id`, `farmer_reg_no`, `paddy_type`, `1kg_buy_price
 
 CREATE TABLE `paddy_issue` (
   `row_id` int(11) NOT NULL,
-  `paddy_issue_id` varchar(11) NOT NULL,
+  `paddy_issue_id` varchar(10) NOT NULL,
   `paddy_type` varchar(50) NOT NULL,
   `total_weight` varchar(250) NOT NULL,
   `1kg_selling_amount` varchar(250) NOT NULL,
@@ -108,7 +118,7 @@ CREATE TABLE `paddy_issue` (
 --
 
 INSERT INTO `paddy_issue` (`row_id`, `paddy_issue_id`, `paddy_type`, `total_weight`, `1kg_selling_amount`, `total_amount`, `supplier_name`, `vachile_name`, `reginal_center_name`, `date`) VALUES
-(2, 'fdg', 'keeri', '350', '50', '17500', '', '', '', '2020-08-12 11:30:33');
+(9, 'PSID1', 'samba', '1000', '354', '354000', 'sajas', 'TN', 'dbsjbj', '2020-09-05 10:47:30');
 
 -- --------------------------------------------------------
 
@@ -118,7 +128,7 @@ INSERT INTO `paddy_issue` (`row_id`, `paddy_issue_id`, `paddy_type`, `total_weig
 
 CREATE TABLE `paddy_price` (
   `row_id` int(11) NOT NULL,
-  `paddy_type` varchar(100) NOT NULL,
+  `paddy_type` varchar(50) NOT NULL,
   `1kg_buy_price` double NOT NULL,
   `1kg_selling_price` double NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -129,8 +139,7 @@ CREATE TABLE `paddy_price` (
 --
 
 INSERT INTO `paddy_price` (`row_id`, `paddy_type`, `1kg_buy_price`, `1kg_selling_price`, `date`) VALUES
-(4, 'samba', 243, 657, '2020-08-11 10:26:25'),
-(5, 'samba', 132, 465, '2020-08-11 10:31:19');
+(5, 'samba', 1324, 465, '2020-09-05 12:18:13');
 
 -- --------------------------------------------------------
 
@@ -140,7 +149,7 @@ INSERT INTO `paddy_price` (`row_id`, `paddy_type`, `1kg_buy_price`, `1kg_selling
 
 CREATE TABLE `paddy_type` (
   `row_id` int(11) NOT NULL,
-  `paddy_name` varchar(100) NOT NULL,
+  `paddy_name` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -149,7 +158,7 @@ CREATE TABLE `paddy_type` (
 --
 
 INSERT INTO `paddy_type` (`row_id`, `paddy_name`, `date`) VALUES
-(1, 'keeri samba', '2020-08-11 10:57:16');
+(5, 'nfbdn', '2020-09-05 12:36:54');
 
 -- --------------------------------------------------------
 
@@ -181,12 +190,16 @@ INSERT INTO `reginal_center` (`row_id`, `reg_center_id`, `reg_center_name`, `reg
 --
 
 CREATE TABLE `stock` (
-  `row_id` int(11) NOT NULL,
-  `paddy_type` varchar(100) NOT NULL,
-  `total_wieght` double NOT NULL,
-  `reg_center_name` varchar(50) NOT NULL,
+  `total_weight` double NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`total_weight`, `date`) VALUES
+(155, '2020-09-05 10:47:30');
 
 -- --------------------------------------------------------
 
@@ -202,6 +215,13 @@ CREATE TABLE `suplier` (
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `suplier`
+--
+
+INSERT INTO `suplier` (`row_id`, `suplier_name`, `suplier_nic`, `suplier_phoneno`, `date`) VALUES
+(3, 'sajas', '970130675v', 770463244, '2020-08-15 12:57:00');
+
 -- --------------------------------------------------------
 
 --
@@ -210,9 +230,9 @@ CREATE TABLE `suplier` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `user_type` varchar(255) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `user_type` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -227,7 +247,15 @@ INSERT INTO `users` (`id`, `username`, `email`, `user_type`, `password`) VALUES
 (5, 'finace', 'f@gmail.com', 'financeofficer', '9d9066e04a7ea65fd94bfcec3191f6fc'),
 (6, 'nfdbn', 'ds@gmail.com', 'storekeeper', '9d9066e04a7ea65fd94bfcec3191f6fc'),
 (7, 'clerck', 'clerck@gmail.com', 'clerk', '9d9066e04a7ea65fd94bfcec3191f6fc'),
-(8, 'collection', 'col@gmail.com', 'collectionofficer', 'd205dea0dd18a4c5676dcd50e3187843');
+(8, 'collection', 'col@gmail.com', 'collectionofficer', 'd205dea0dd18a4c5676dcd50e3187843'),
+(9, 'sajas', 'ds@g.c', 'clerk', '083f1733bd95e16226d5d0f173512728'),
+(10, 'nfbsn', 'd@g.c', 'admin', '0699f054e84878aac7e822bca345b812'),
+(11, 'fmfndm', 's@g.c', 'manager', '0699f054e84878aac7e822bca345b812'),
+(12, 'sss', 's@g.c', 'financeofficer', '0699f054e84878aac7e822bca345b812'),
+(13, 'nnn', 'd@g.c', 'financeofficer', '0699f054e84878aac7e822bca345b812'),
+(14, 'n', 'd@g.c', 'manager', '9d9066e04a7ea65fd94bfcec3191f6fc'),
+(15, 's', 's@g.c', 'financeofficer', '9d9066e04a7ea65fd94bfcec3191f6fc'),
+(16, 's', 's@g.c', 'financeofficer', '9d9066e04a7ea65fd94bfcec3191f6fc');
 
 -- --------------------------------------------------------
 
@@ -237,11 +265,18 @@ INSERT INTO `users` (`id`, `username`, `email`, `user_type`, `password`) VALUES
 
 CREATE TABLE `vechiles` (
   `row_id` int(11) NOT NULL,
-  `vech_name` varchar(100) NOT NULL,
-  `vech_type` varchar(100) NOT NULL,
-  `vech_no` varchar(100) NOT NULL,
+  `vech_name` varchar(50) NOT NULL,
+  `vech_type` varchar(50) NOT NULL,
+  `vech_no` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vechiles`
+--
+
+INSERT INTO `vechiles` (`row_id`, `vech_name`, `vech_type`, `vech_no`, `date`) VALUES
+(2, 'TN', 'VAN', '2235SF', '2020-08-15 12:49:41');
 
 --
 -- Indexes for dumped tables
@@ -263,7 +298,7 @@ ALTER TABLE `farmer`
 -- Indexes for table `paddy_buy`
 --
 ALTER TABLE `paddy_buy`
-  ADD PRIMARY KEY (`row_id`);
+  ADD PRIMARY KEY (`row_id`) USING BTREE;
 
 --
 -- Indexes for table `paddy_issue`
@@ -287,12 +322,6 @@ ALTER TABLE `paddy_type`
 -- Indexes for table `reginal_center`
 --
 ALTER TABLE `reginal_center`
-  ADD PRIMARY KEY (`row_id`);
-
---
--- Indexes for table `stock`
---
-ALTER TABLE `stock`
   ADD PRIMARY KEY (`row_id`);
 
 --
@@ -321,25 +350,25 @@ ALTER TABLE `vechiles`
 -- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `farmer`
 --
 ALTER TABLE `farmer`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `paddy_buy`
 --
 ALTER TABLE `paddy_buy`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `paddy_issue`
 --
 ALTER TABLE `paddy_issue`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `paddy_price`
@@ -351,7 +380,7 @@ ALTER TABLE `paddy_price`
 -- AUTO_INCREMENT for table `paddy_type`
 --
 ALTER TABLE `paddy_type`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reginal_center`
@@ -360,28 +389,22 @@ ALTER TABLE `reginal_center`
   MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `stock`
---
-ALTER TABLE `stock`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `suplier`
 --
 ALTER TABLE `suplier`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vechiles`
 --
 ALTER TABLE `vechiles`
-  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `row_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

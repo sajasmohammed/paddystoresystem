@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 
 ?>
 
@@ -128,3 +128,4 @@ if (isset($_GET['edit_vechile'])){
 
 
 ?>
+<?php  } ?>

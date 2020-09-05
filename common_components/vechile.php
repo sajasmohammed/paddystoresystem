@@ -156,7 +156,7 @@
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_vechile.php?delete_vechile=<?php echo $id; ?>">
+																													<a href="delete_vechile.php?delete_vechile=<?php echo $id; ?>"  onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_vechile.php?edit_vechile=<?php echo $id; ?>">

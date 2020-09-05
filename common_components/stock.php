@@ -10,45 +10,61 @@
 ?>
 
 <?php
-$paddy_name="";
-$sql=mysqli_query($conn,"select * from paddy_type");
-if (mysqli_num_rows($sql)) {
-  while ($row=mysqli_fetch_array($sql)) {
-        $paddy_name.='<option value='.$row['paddy_name'].'>'.$row['paddy_name'].'</option>';
-  }
-}
+// $paddy_name="";
+// $sql=mysqli_query($conn,"select * from paddy_type");
+// if (mysqli_num_rows($sql)) {
+//   while ($row=mysqli_fetch_array($sql)) {
+//         $paddy_name.='<option value='.$row['paddy_name'].'>'.$row['paddy_name'].'</option>';
+//   }
+// }
 ?>
 
 <?php
-$reginal_center_name="";
-$sql=mysqli_query($conn,"select * from reginal_center");
-if (mysqli_num_rows($sql)) {
-  while ($row=mysqli_fetch_array($sql)) {
-        $reginal_center_name.='<option value='.$row['reg_center_name'].'>'.$row['reg_center_name'].'</option>';
-  }
-}
+// $reginal_center_name="";
+// $sql=mysqli_query($conn,"select * from reginal_center");
+// if (mysqli_num_rows($sql)) {
+//   while ($row=mysqli_fetch_array($sql)) {
+//         $reginal_center_name.='<option value='.$row['reg_center_name'].'>'.$row['reg_center_name'].'</option>';
+//   }
+// }
 ?>
+
+<?php
+	
+	?>
+
+
 <?php
 
-	if(isset($_POST["insert"]))
-	{
-				 $paddy_type =$_POST['paddy_type'];
-				 $total_wieght =$_POST['total_wieght'];
-				 $reg_center_name =$_POST['reg_center_name'];
+	// if(isset($_POST["insert"]))
+	// {
+	// 			 $paddy_type =$_POST['paddy_type'];
+	// 			 $total_wieght =$_POST['total_wieght'];
+	// 			 $reg_center_name =$_POST['reg_center_name'];
 				
-			    		  $sql = "INSERT INTO stock(paddy_type, total_wieght, reg_center_name) VALUES ('$paddy_type','$total_wieght','$reg_center_name')";
-
- 									if (mysqli_query($conn, $sql)) {
-
- 										echo '<script type="text/javascript"> alert("New record created successfully");</script>';
- 										echo '<script type="text/javascript"> window.location.href="stock.php";</script>';
-
-									} else {
-                           echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-             				 }
-
-							}
-
+	// 			 $sql8 = "SELECT Sum(total_wieght) as 'sumcflow' from stock";
+	// 			 $run=mysqli_query($conn, $sql8);
+	// 				 while($rows=mysqli_fetch_array($run)) {
+	// 					 $cal_wieght=$rows['sumcflow'];
+	// 					 $cal_stock=$total_wieght + $cal_wieght;
+	// 					  	if($cal_stock < 100){
+							 
+	// 						 $sql = "INSERT INTO stock(paddy_type, total_wieght, reg_center_name) VALUES ('$paddy_type','$total_wieght','$reg_center_name')";
+										 
+	// 							if (mysqli_query($conn, $sql)) {
+												
+	// 								echo '<script type="text/javascript"> alert("New record created successfully");</script>';
+	// 								echo '<script type="text/javascript"> window.location.href="stock.php";</script>';
+		
+	// 							} 
+	// 							else {
+	// 							    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	// 							}
+	// 					  	}else{
+	// 						echo'<script type="text/javascript"> alert("Out of Stock");</script>';										 
+	// 						}
+	// 				 } 	
+	// }
 
  ?>
 
@@ -88,7 +104,7 @@ if (mysqli_num_rows($sql)) {
 								                    <div class="col-md-12">
 								                        <div class="card card-body printableArea">
 																					<div align="center">
-																				    <button type="button" name="add" id="add" class="btn btn-success">Add Stock Details</button>
+																				    <!-- <button type="button" name="add" id="add" class="btn btn-success">Add Stock Details</button> -->
 																				   </div>
 
 																					<div id="imageModal" class="modal fade" role="dialog">
@@ -99,7 +115,7 @@ if (mysqli_num_rows($sql)) {
 																						<button type="button" class="btn btn-danger" data-dismiss="modal"><strong>&times;</strong></button>
 																					   </div>
 																					   <div class="modal-body">
-																					    <form id="image_form" action="" method="post" enctype="multipart/form-data">
+																					    <form id="image_form" action="" method="post" enctype="multipart/form-data"> -->
 
 																				
 																						<div class="form-group row">
@@ -143,17 +159,17 @@ if (mysqli_num_rows($sql)) {
 																					<form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
 
 																								<div class="card-body">
-																												<h4 class="text-danger">Stock Details</h4><br>
+
+																								
+																								<h4 class="text-danger">Stock Details</h4><br>
 																												<div class="table-responsive"><!-- table-responsive begin -->
 																														<table id="zero_config" class="table table-striped table-bordered"><!-- table table-striped table-bordered table-hover begin -->
 
 																																<thead><!-- thead begin -->
 																																		<tr><!-- tr begin -->
-																																			<th> Paddy Type </th>
 																																			<th> Total Wieght </th>
-																																			<th> Reginal Center Name </th>
 																																			<th> Date </th>
-																																			<th> Modify </th>
+																																			<!-- <th> Modify </th> -->
 																																		</tr><!-- tr finish -->
 																																</thead><!-- thead finish -->
 
@@ -165,27 +181,22 @@ if (mysqli_num_rows($sql)) {
 																																					$sql= "select * from stock";
 																																					$run = mysqli_query($conn,$sql);
 																																						while($row=mysqli_fetch_array($run)){
-																																								$id = $row['row_id'];
-																																								$paddy_type = $row['paddy_type'];
-																																								$total_wieght = $row['total_wieght'];
-																																								$reg_center_name = $row['reg_center_name'];
+																																								$total_wieght = $row['total_weight'];
 																																								$date = $row['date'];
 																																								$i++;
 																																		?>
 																													<tr><!-- tr begin -->
-																															<td> <?php echo $paddy_type; ?> </td>
 																															<td> <?php echo $total_wieght; ?> </td>
-																															<td> <?php echo $reg_center_name; ?> </td>
 																															<td> <?php echo $date; ?> </td>
-																													<td>
+																													<!-- <td> -->
 
-																													<a href="delete_stock.php?delete_stock=<?php echo $id; ?>">
+																													<!-- <a href="delete_stock.php?delete_stock=<?php //echo $id; ?>">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
-																												 	<a href="edit_stock.php?edit_stock=<?php echo $id; ?>">
+																												 	<a href="edit_stock.php?edit_stock=<?php //echo $id; ?>">
 																															<i class=" fas fa-pencil-alt"></i>
-																													</a>
-																													</td>
+																													</a> -->
+																													<!-- </td> -->
 																													</tr>
 																										<?php } ?>
 																								</tbody>

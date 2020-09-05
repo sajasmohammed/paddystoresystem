@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 
 ?>
 
@@ -40,20 +40,20 @@ if (mysqli_num_rows($sql)) {
 ?>
 
 <?php
-$vachile_name="";
-$sql=mysqli_query($conn,"select * from suplier");
+$vahicle_name="";
+$sql=mysqli_query($conn,"select * from vechiles");
 if (mysqli_num_rows($sql)) {
   while ($row=mysqli_fetch_array($sql)) {
-        $vachile_name.='<option value='.$row['vachile_name'].'>'.$row['vachile_name'].'</option>';
+        $vahicle_name.='<option value='.$row['vech_name'].'>'.$row['vech_name'].'</option>';
   }
 }
 ?>
 <?php
-$reginal_center_name="";
-$sql=mysqli_query($conn,"select * from suplier");
+$reginal_centers_name="";
+$sql=mysqli_query($conn,"select * from reginal_center");
 if (mysqli_num_rows($sql)) {
   while ($row=mysqli_fetch_array($sql)) {
-        $reginal_center_name.='<option value='.$row['reginal_center_name'].'>'.$row['reginal_center_name'].'</option>';
+        $reginal_centers_name.='<option value='.$row['reg_center_name'].'>'.$row['reg_center_name'].'</option>';
   }
 }
 ?>
@@ -129,8 +129,7 @@ if (isset($_GET['edit_paddy_issue'])){
 								 																 <label for="paddy_type"  class="col-sm-3 text-right control-label col-form-label" >Paddy Type</label>
 								 																	<div class="col-md-6">
 								 																			 <select name="paddy_type"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
-								 																							 <option value="<?php echo $paddy_type; ?>"><?php echo $paddy_type; ?></option>
+								 																							 <option value=""> <?php echo $paddy_type; ?></option>
 								 																							 <?php echo $paddy_name; ?>
 								 																			 </select>
 								 																	 </div>
@@ -154,8 +153,7 @@ if (isset($_GET['edit_paddy_issue'])){
 								 																 <label for="supplier_name"  class="col-sm-3 text-right control-label col-form-label" >Supplier Name</label>
 								 																	<div class="col-md-6">
 								 																			 <select name="supplier_name"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
-								 																							 <option value="<?php echo $suplier_name; ?>"> <?php echo $suplier_name; ?></option>
+								 																							 <option value=""><?php echo $supplier_name; ?></option>
 								 																							 <?php echo $supplier_name; ?>
 								 																			 </select>
 								 																	 </div>
@@ -164,9 +162,8 @@ if (isset($_GET['edit_paddy_issue'])){
 								 																 <label for="vachile_name"  class="col-sm-3 text-right control-label col-form-label" >Vachile Name</label>
 								 																	<div class="col-md-6">
 								 																			 <select name="vachile_name"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
-								 																							 <option value="<?php echo $vachile_name; ?>"> <?php echo $vachile_name; ?></option>
-								 																							 <?php echo $vachile_name; ?>
+								 																							 <option value=""><?php echo $vachile_name; ?></option>
+								 																							 <?php echo $vahicle_name; ?>
 								 																			 </select>
 								 																	 </div>
 								 																</div>
@@ -174,9 +171,8 @@ if (isset($_GET['edit_paddy_issue'])){
 								 																 <label for="reginal_center_name"  class="col-sm-3 text-right control-label col-form-label" >Reginal Center Name</label>
 								 																	<div class="col-md-6">
 								 																			 <select name="reginal_center_name"  required class="select2 form-control custom-select" style="width: 100%; height:36px;">
-								 																							 <option value="">Select</option>
-								 																							 <option value="<?php echo $reginal_center_name; ?>"> <?php echo $reginal_center_name; ?></option>
-								 																							 <?php echo $reginal_center_name; ?>
+								 																							 <option value=""><?php echo $reginal_center_name; ?></option>
+								 																							 <?php echo $reginal_centers_name; ?>
 								 																			 </select>
 								 																	 </div>
 								 																</div>
@@ -229,3 +225,4 @@ if (isset($_GET['edit_paddy_issue'])){
 
 
 ?>
+<?php } ?>

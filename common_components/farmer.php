@@ -5,8 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
-	
+	}else{
 
 ?>
   <?php
@@ -24,18 +23,19 @@
 				$farmer_nic=$_POST['farmer_nic'];
 				$farmer_mobileno=$_POST['farmer_mobileno'];
 
-						  $sql = "INSERT INTO farmer(farmer_reg_no,farmer_name,farmer_nic,farmer_mobileno) VALUES ('$fimat','$farmer_name','$farmer_nic','$farmer_mobileno')";
+						$sql = "INSERT INTO farmer(farmer_reg_no,farmer_name,farmer_nic,farmer_mobileno) VALUES ('$fimat','$farmer_name','$farmer_nic','$farmer_mobileno')";
 
- 									if (mysqli_query($conn, $sql)) {
+ 						if (mysqli_query($conn, $sql)) {
 
  										echo '<script type="text/javascript"> alert("New record created successfully");</script>';
  										echo '<script type="text/javascript"> window.location.href="farmer.php";</script>';
 
-									} else {
+						} 
+						else {
                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-             				 }
+             			}
 
-							}
+	}
 
 
  ?>
@@ -172,7 +172,7 @@
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_farmer.php?delete_farmer=<?php echo $id; ?>">
+																													<a href="delete_farmer.php?delete_farmer=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_farmer.php?edit_farmer=<?php echo $id; ?>">
@@ -227,3 +227,4 @@
 
 	  </body>
 </html>
+													<?php } ?>

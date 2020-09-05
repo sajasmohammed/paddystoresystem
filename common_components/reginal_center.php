@@ -5,17 +5,20 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 	
 ?>
 
-  <?php
+<?php
 
+//if contions
 	if(isset($_POST["insert"]))
 	{
 				$sql = "select * from reginal_center";
 				$result = mysqli_query($conn, $sql);
 				$rows=mysqli_num_rows($result);
+				
+				//auto increment
 				$ind=1;
 				$reg_center_id=$rows+$ind;
 				$mat="RCID";
@@ -154,7 +157,7 @@
 
 																																		<?php
 																																					$i=0;
-
+																																					// while loop
 																																					$sql= "select * from reginal_center";
 																																					$run = mysqli_query($conn,$sql);
 																																						while($row=mysqli_fetch_array($run)){
@@ -176,7 +179,7 @@
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_reginal_center.php?delete_reginal_center=<?php echo $id; ?>">
+																													<a href="delete_reginal_center.php?delete_reginal_center=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_reginal_center.php?edit_reginal_center=<?php echo $id; ?>">
@@ -227,3 +230,4 @@
 
 	  </body>
 </html>
+													<?php } ?>

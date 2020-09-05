@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 	
 ?>
 
@@ -100,8 +100,8 @@
 																								<div class="form-group row">
 																										 <label for="suplier_phoneno" class="col-sm-3 text-right control-label col-form-label">Suplier Phone Number</label>
 																											 <div class="col-sm-6">
-																												 <input type="text" name="suplier_phoneno" autocomplete="off" required class="form-control"  id="suplier_phoneno" placeholder="Suplier Phone Number">
-																											 </div>
+																											 	<input type="text" name="suplier_phoneno" class="form-control phone-inputmask" required id="phone-mask" placeholder="Enter Phone Number">
+                                																			 </div>
 																								</div>
 
 																								
@@ -119,7 +119,7 @@
 																					<form class="form-horizontal" action="" enctype="multipart/form-data" method="post">
 
 																								<div class="card-body">
-																												<h4 class="text-danger">Farmers Details</h4><br>
+																												<h4 class="text-danger">Suplier Details</h4><br>
 																												<div class="table-responsive"><!-- table-responsive begin -->
 																														<table id="zero_config" class="table table-striped table-bordered"><!-- table table-striped table-bordered table-hover begin -->
 
@@ -155,7 +155,7 @@
 																															<td> <?php echo $date; ?> </td>
 																													<td>
 
-																													<a href="delete_suplier.php?delete_suplier=<?php echo $id; ?>">
+																													<a href="delete_suplier.php?delete_suplier=<?php echo $id; ?>"  onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_suplier.php?edit_suplier=<?php echo $id; ?>">
@@ -174,6 +174,9 @@
 								                <?php include '../mainstuff/footer.php'; ?>
 								            </div>
 								            <?php include '../mainstuff/allquery.php'; ?>
+											<script src="../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+											<script src="../dist/js/pages/mask/mask.init.js"></script>
+    
 														<script src="../js/jquery.dataTables.min.js"></script>
 														<script src="../js/dataTables.buttons.min.js"></script>
 														<script src="../js/buttons.flash.min.js"></script>
@@ -182,6 +185,7 @@
 														<script src="../js/vfs_fonts.js"></script>
 														<script src="../js/buttons.html5.min.js"></script>
 														<script src="../js/buttons.print.min.js"></script>
+														
 
 														<script>
 														$(document).ready(function() {
@@ -206,3 +210,4 @@
 
 	  </body>
 </html>
+<?php } ?>

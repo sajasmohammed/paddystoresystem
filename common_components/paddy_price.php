@@ -5,7 +5,7 @@
 	if (!isAdmin() AND !isCollactionOfficer() AND !isManager() AND !isClerk() AND !isFinanceOfficer() AND !isStorekeeper()) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: ../Index.php');
-	}
+	}else{
 	
 ?>
 
@@ -30,7 +30,7 @@ if (mysqli_num_rows($sql)) {
     //    include 'mainconnection.php';
       	error_reporting(0);
 
-		 		 $paddy_name =$_POST['paddy_name'];
+		 		$paddy_name =$_POST['paddy_name'];
 			    $buy_price =$_POST['1kg_buy_price'];
 				$selling_price=$_POST['1kg_selling_price'];
 			
@@ -75,7 +75,7 @@ if (mysqli_num_rows($sql)) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Paddy Buy</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Paddy Price</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -176,8 +176,8 @@ if (mysqli_num_rows($sql)) {
 																															<td> <?php echo $selling_price; ?> </td>
 																															<td> <?php echo $date; ?> </td>
 																													<td>
-
-																													<a href="delete_paddy_price.php?delete_paddy_price=<?php echo $id; ?>">
+																													
+																													<a href="delete_paddy_price.php?delete_paddy_price=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
 																															<i class=" fas fa-trash-alt"></i>
 																													</a>&nbsp&nbsp / &nbsp
 																												 	<a href="edit_paddy_price.php?edit_paddy_price=<?php echo $id; ?>">
@@ -228,3 +228,4 @@ if (mysqli_num_rows($sql)) {
 
 	  </body>
 </html>
+<?php } ?>
