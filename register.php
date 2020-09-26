@@ -70,6 +70,17 @@
                                         
                                     </select>
                                 </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-primary text-white" id="basic-addon2"><i class="ti-lock"></i></span>
+                                    </div>
+                                    <select  name="departments" class="form-control form-control-lg" aria-label="departments" aria-describedby="basic-addon1" required >
+                                    <option value="">Departments</option>
+                                      <option value="headoffice">Head Office</option>
+                                      <option value="reginaloffice">Reginal Officer</option>
+                                        
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="row border-top border-secondary">

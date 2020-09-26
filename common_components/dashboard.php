@@ -47,7 +47,6 @@
                           <strong class="text-info"><?php echo $_SESSION['user']['username']; ?></strong> <i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
                           <?php endif ?>
                         </a>
-                        <a class="dropdown-item" href="../changepassword.php"><i class="ti-key m-r-5 m-l-5"></i>Change Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../logout.php"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                         <div class="dropdown-divider"></div>
@@ -112,6 +111,7 @@
 											        $result = mysqli_query($conn, $sql);
 												    $bank_rows=mysqli_num_rows($result);
                                                 ?>
+                                                
                                                 <!-- Column -->
                                                 <div class="col-md-6 col-lg-3">
                                                     <div class="card card-hover">
@@ -135,6 +135,8 @@
                                                 </div>
                                                 <!-- Column -->
                                                 
+
+                                               
                                                 <!-- Column -->
                                                 <?php
 													$sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_issue";
@@ -254,7 +256,7 @@
                                                 <!-- Column -->
                                                 <?php
 													
-                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_buy where paddy_type='keeri samba'";
+                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_buy where paddy_type='basmati'";
                                                     $run=mysqli_query($conn, $sql);
                                                         while ( $rows=mysqli_fetch_array($run)) {
                                                             $cal_amount=$rows['sumcflow'];
@@ -263,7 +265,7 @@
                                                     <div class="card card-danger">
                                                         <div class="box bg-warning text-center">
                                                             <h1 class="font-light text-white"><i class="mdi mdi-item"></i></h1>
-                                                            <a href="bank.php"><h6 class="text-white">Keeri Samba - Paddy Buy</h6></a>
+                                                            <a href="bank.php"><h6 class="text-white">Basmati - Paddy Buy</h6></a>
                                                             <h4 class="text-white"><?php echo $cal_amount; ?> KG</h4>
                                                         </div>
                                                     </div>
@@ -294,7 +296,7 @@
                                                 <!-- Column -->
                                                 <?php
 													
-                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_issue where paddy_type='keeri samba'";
+                                                    $sql = "SELECT Sum(total_weight) as 'sumcflow' from paddy_issue where paddy_type='basmati'";
                                                     $run=mysqli_query($conn, $sql);
                                                         while ( $rows=mysqli_fetch_array($run)) {
                                                             $cal_amount=$rows['sumcflow'];
@@ -303,7 +305,7 @@
                                                     <div class="card card-danger">
                                                         <div class="box bg-info text-center">
                                                             <h1 class="font-light text-white"><i class="mdi mdi-item"></i></h1>
-                                                            <a href="bank.php"><h6 class="text-white">Keeri Samba - Paddy Issue</h6></a>
+                                                            <a href="bank.php"><h6 class="text-white">Basmati - Paddy Issue</h6></a>
                                                             <h4 class="text-white"><?php echo $cal_amount; ?> KG</h4>
                                                         </div>
                                                     </div>

@@ -22,6 +22,7 @@ if (isset($_GET['add_bank_details'])){
 		$row = mysqli_fetch_array($run);
 		
 		$farmer_reg_no =$row['farmer_reg_no'];
+		$amount =$row['total_amount'];
 		
 }
 
@@ -90,7 +91,7 @@ if (isset($_GET['add_bank_details'])){
 																								<div class="form-group row">
 																										 <label for="amount" class="col-sm-3 text-right control-label col-form-label">Amount</label>
 																											 <div class="col-sm-6">
-																												 <input type="number" name="amount"  autocomplete="off" required class="form-control"  id="amount" placeholder="Amount">
+																												 <input type="number" name="amount" value="<?php echo $amount; ?>" autocomplete="off" required class="form-control"  id="amount" placeholder="Amount">
 																											 </div>
 																								</div>
 														 <div class="" align="center">

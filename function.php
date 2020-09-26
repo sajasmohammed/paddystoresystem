@@ -57,11 +57,12 @@
 
 			if (isset($_POST['user_type'])) {
 				$user_type = e($_POST['user_type']);
-				$query = "INSERT INTO users (username, email, user_type, password)
-						  VALUES('$username', '$email', '$user_type', '$password')";
+				$department = e($_POST['departments']);
+				$query = "INSERT INTO users (username, email, user_type, department, password)
+						  VALUES('$username', '$email', '$user_type', '$department', '$password')";
 				mysqli_query($conn, $query);
-				header('location: register.php');
 				array_push($success, "Registered Successfully...");
+				header('location: register.php');
 					
 			}
 			

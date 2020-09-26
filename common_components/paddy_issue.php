@@ -94,6 +94,8 @@ if (mysqli_num_rows($sql)) {
  										echo '<script type="text/javascript"> window.location.href="paddy_issue.php";</script>';
 
 									} else {
+										echo '<script type="text/javascript"> alert("Please Buy Paddy First");</script>';
+ 										
                            				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
              				 		}
 

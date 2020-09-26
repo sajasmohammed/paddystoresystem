@@ -29,12 +29,12 @@ if (mysqli_num_rows($sql)) {
 
 $paddy_name="";
 
-$sql=mysqli_query($conn,"select * from paddy_price");
+$sql=mysqli_query($conn,"select * from paddy_type");
 
 if (mysqli_num_rows($sql)) {
   while ($row=mysqli_fetch_array($sql)) {
 
-        $paddy_name.='<option value='.$row['paddy_type'].'>'.$row['paddy_type'].'</option>';
+        $paddy_name.='<option value='.$row['paddy_name'].'>'.$row['paddy_name'].'</option>';
 
   }
 }
