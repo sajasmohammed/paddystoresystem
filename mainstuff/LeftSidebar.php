@@ -16,12 +16,12 @@
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_issue.php" aria-expanded="false"><i class="mdi mdi-cube-send"></i><span class="hide-menu">Paddy Issue</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_buy.php" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Paddy Buy</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/bank.php" aria-expanded="false"><i class="mdi mdi-bank"></i><span class="hide-menu">Bank</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../register.php" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Register User</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_price.php" aria-expanded="false"><i class="mdi mdi-cash-usd"></i><span class="hide-menu">Paddy Price List</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_type.php" aria-expanded="false"><i class="mdi mdi-menu"></i><span class="hide-menu">Paddy Type</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/paddy_price.php" aria-expanded="false"><i class="mdi mdi-cash-usd"></i><span class="hide-menu">Paddy Price List</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/vechile.php" aria-expanded="false"><i class="mdi mdi-ambulance"></i><span class="hide-menu">Paddy Vechile</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/suplier.php" aria-expanded="false"><i class="mdi mdi-account-switch"></i><span class="hide-menu">Paddy Suplier</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/reginal_center.php" aria-expanded="false"><i class="mdi mdi-hospital-building"></i><span class="hide-menu">Reginal Center</span></a></li>';
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../common_components/reginal_center.php" aria-expanded="false"><i class="mdi mdi-hospital-building"></i><span class="hide-menu">Reginal Center</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../register.php" aria-expanded="false"><i class="mdi mdi-account-multiple-plus"></i><span class="hide-menu">Register User</span></a></li>';
 
             }
             

@@ -14,13 +14,13 @@
 
         $id = $_GET['delete_paddy_price'];
 
-        $sql = "delete * from paddy_price where row_id='$id'";
+        $sql = "delete from paddy_price where row_id='$id'";
 
         $run = mysqli_query($conn,$sql);
 
         if($run){
 
-            echo "<script>alert('One of your Register Farmer has been Deleted')</script>";
+            echo "<script>alert('One of your paddy price has been Deleted')</script>";
 			echo '<script type="text/javascript"> window.location.href="paddy_price.php";</script>';
 
         }

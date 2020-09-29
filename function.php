@@ -61,8 +61,7 @@
 				$query = "INSERT INTO users (username, email, user_type, department, password)
 						  VALUES('$username', '$email', '$user_type', '$department', '$password')";
 				mysqli_query($conn, $query);
-				array_push($success, "Registered Successfully...");
-				header('location: register.php');
+				header('location: ./common_components/dashboard.php');
 					
 			}
 			

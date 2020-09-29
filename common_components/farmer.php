@@ -109,6 +109,12 @@
 																												 <input type="text" name="farmer_nic" autocomplete="off"  required class="form-control"  id="" placeholder="Enter NIC">
 																											 </div>
 																								</div> 	
+																								<div class="form-group row">
+																										 <label for="nicId" class="col-sm-3 text-right control-label col-form-label">Email </label>
+																											 <div class="col-sm-6">
+																												 <input type="email" name="email" autocomplete="off"  required class="form-control"  id="" placeholder="Enter Email">
+																											 </div>
+																								</div> 	
 
 																								<div class="form-group row">
 																										 <label for="phone-mask" class="col-sm-3 text-right control-label col-form-label">Farmer Mobile Number</label>
